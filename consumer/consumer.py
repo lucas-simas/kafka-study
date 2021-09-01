@@ -1,14 +1,10 @@
 from kafka import KafkaConsumer
 
-# To consume latest messages and auto-commit offsets
-consumer = KafkaConsumer('meu-topicao', group_id='grupao', bootstrap_servers='localhost:9092')
-print(consumer)
-metrics = consumer.metrics()
-print(metrics)
-for message in consumer:
-    # message value and key are raw bytes -- decode if necessary!
-    # e.g., for unicode: `message.value.decode('utf-8')`
-    print (message)
+consumer = KafkaConsumer('meutopicao', bootstrap_servers='localhost:9094')
+
+for msg in consumer:
+    print (msg)
+
 
 # # consume earliest available messages, don't commit offsets
 # KafkaConsumer(auto_offset_reset='earliest', enable_auto_commit=False)
